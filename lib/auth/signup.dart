@@ -3,17 +3,20 @@ import 'package:flutter/services.dart';
 import 'topic_interest.dart';
 
 class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool _isChecked = false;
+  bool _isPasswordVisible = false;
 
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController(text: '+63');
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController(text: '+63');
 
   bool _isValid = false;
   String _warningMessage = '';
@@ -62,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       if (newText.startsWith('+63')) {
         String digits = newText.substring(3).replaceAll(RegExp(r'[^0-9]'), '');
         return newValue.copyWith(
-          text: '+63' + digits.substring(0, digits.length > 10 ? 10 : digits.length),
+          text: '+63${digits.substring(0, digits.length > 10 ? 10 : digits.length)}',
           selection: TextSelection.collapsed(offset: newText.length),
         );
       }
@@ -201,8 +204,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           width: 2.0,
                         ),
                       ),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
-                    obscureText: true,
+                    obscureText: !_isPasswordVisible,
                     onChanged: (_) => _validateInputs(),
                   ),
                   const SizedBox(height: 20),
@@ -270,7 +283,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 1),
 
                   // Warning message
                   if (_warningMessage.isNotEmpty)
