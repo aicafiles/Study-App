@@ -275,10 +275,7 @@ class _TopicInterestScreenState extends State<TopicInterestScreen> {
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
-                      );
+                      Navigator.pushReplacementNamed(context, '/home');
                     },
                     child: const Text(
                       'Continue',

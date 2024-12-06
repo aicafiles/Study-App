@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'topic_interest.dart';
+import 'topic_interest.dart'; // Import the TopicInterestScreen
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -292,38 +292,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: const TextStyle(
                         color: Colors.red,
                         fontSize: 14,
-                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   const SizedBox(height: 20),
 
                   // Sign Up Button
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: _isValid
-                          ? blueColor
-                          : const Color(0xFFB3E0FF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      minimumSize: const Size(double.infinity, 50),
-                    ),
                     onPressed: _isValid
                         ? () {
+                      // Navigate to TopicInterestScreen after successful signup
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => TopicInterestScreen(),
-                        ),
+                        MaterialPageRoute(builder: (context) => TopicInterestScreen()),
                       );
                     }
                         : null,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: blueColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    ),
                     child: const Text(
                       'Sign Up',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
                     ),

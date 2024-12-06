@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'forgot_password.dart';
 import '../screens/home.dart';
+import '../screens/calendar.dart'; // Import CalendarScreen
+import '../screens/profile.dart'; // Import ProfileScreen
+import '../main.dart'; // Import MainScreen for BottomNavigationBar
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -156,17 +159,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           showDialog(
                             context: context,
                             barrierDismissible: false,
-                            builder: (context) => Center(
+                            builder: (context) => const Center(
                               child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF42A5F5)),
                               ),
                             ),
                           );
-                          await Future.delayed(Duration(seconds: 1));
+                          await Future.delayed(const Duration(seconds: 1));
                           Navigator.pop(context);
-                          Navigator.push(
+                          // After successful login, navigate to MainScreen
+                          Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => HomeScreen()),
+                            MaterialPageRoute(builder: (context) => const MainScreen()),
                           );
                         }
                       },
@@ -190,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SignUpScreen()),
+                              MaterialPageRoute(builder: (context) => const SignUpScreen()),
                             );
                           },
                           child: const Text(
@@ -209,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ForgotPasswordScreen(),
+                                builder: (context) => const ForgotPasswordScreen(),
                               ),
                             );
                           },
