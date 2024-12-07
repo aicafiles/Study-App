@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hi, Name',
+              'Hi, Name!',
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 22,
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 16),
+            const SizedBox(height: 17),
             // Progress Cards
             Row(
               children: [
@@ -133,7 +133,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            Expanded(
+            Flexible(
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [

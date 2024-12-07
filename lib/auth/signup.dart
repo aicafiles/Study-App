@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'topic_interest.dart'; // Import the TopicInterestScreen
+import 'topic_interest.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -302,7 +302,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ElevatedButton(
                     onPressed: _isValid
                         ? () {
-                      // Navigate to TopicInterestScreen after successful signup
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => TopicInterestScreen()),

@@ -274,7 +274,18 @@ class _TopicInterestScreenState extends State<TopicInterestScreen> {
                       ),
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) => const Center(
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF42A5F5)),
+                          ),
+                        ),
+                      );
+                      await Future.delayed(const Duration(seconds: 1));
+                      Navigator.pop(context);
                       Navigator.pushReplacementNamed(context, '/home');
                     },
                     child: const Text(

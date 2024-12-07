@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'forgot_password.dart';
-import '../screens/home.dart';
-import '../screens/calendar.dart'; // Import CalendarScreen
-import '../screens/profile.dart'; // Import ProfileScreen
-import '../main.dart'; // Import MainScreen for BottomNavigationBar
+import '../main.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -167,7 +164,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                           await Future.delayed(const Duration(seconds: 1));
                           Navigator.pop(context);
-                          // After successful login, navigate to MainScreen
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => const MainScreen()),
