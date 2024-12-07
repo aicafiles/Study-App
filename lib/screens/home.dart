@@ -74,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                 Flexible(
                   child: _buildActionButton(
                     icon: Icons.book_outlined,
-                    label: 'Flash Cards',
+                    label: 'Flashcards',
                     color: Colors.teal[300]!,
                     onPressed: () {
                       Navigator.push(

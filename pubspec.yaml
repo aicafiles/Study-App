@@ -16,6 +16,7 @@ dependencies:
   table_calendar: ^3.0.8
   google_fonts: ^6.2.1
   intl: ^0.19.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +29,7 @@ flutter:
   assets:
     - assets/images/cover_bg.jpg
     - assets/images/onboarding.jpg
+    - assets/images/profile.jpg
 
   fonts:
     - family: Poppins
