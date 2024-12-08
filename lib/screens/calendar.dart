@@ -12,7 +12,7 @@ class CalendarScreen extends StatefulWidget {
 class _CalendarScreenState extends State<CalendarScreen> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
-  Map<DateTime, List<Map<String, String>>> _tasks = {};
+  final Map<DateTime, List<Map<String, String>>> _tasks = {};
 
   void _resetSelectedDate() {
     setState(() {
@@ -149,7 +149,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '$title',
+                                title,
                                 style: const TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 16,
@@ -157,7 +157,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                 ),
                               ),
                               Text(
-                                '(${daysLeft} days left)',
+                                '($daysLeft days left)',
                                 style: const TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 13,
@@ -211,11 +211,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   void _showTaskDetailsDialog(Map<String, String> task, int index) {
-    final TextEditingController _titleController =
+    final TextEditingController titleController =
     TextEditingController(text: task['title']);
-    final TextEditingController _notesController =
+    final TextEditingController notesController =
     TextEditingController(text: task['notes']);
-    bool _isEditable = false;
+    bool isEditable = false;
 
     showDialog(
       context: context,
@@ -233,8 +233,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 children: [
                   Expanded(
                     child: TextField(
-                      controller: _titleController,
-                      enabled: _isEditable,
+                      controller: titleController,
+                      enabled: isEditable,
                       style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 22,
@@ -243,7 +243,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       ),
                       decoration: InputDecoration(
                         hintText: 'Task Title',
-                        border: _isEditable
+                        border: isEditable
                             ? const OutlineInputBorder(
                           borderSide:
                           BorderSide(color: Color(0xFF42A5F5), width: 2),
@@ -257,20 +257,20 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   ),
                   IconButton(
                     icon: Icon(
-                      _isEditable ? Icons.check : Icons.edit,
+                      isEditable ? Icons.check : Icons.edit,
                       color: const Color(0xFF42A5F5),
                     ),
                     onPressed: () {
                       setState(() {
-                        if (_isEditable) {
+                        if (isEditable) {
                           setState(() {
                             _tasks[_selectedDay!]![index] = {
-                              'title': _titleController.text,
-                              'notes': _notesController.text,
+                              'title': titleController.text,
+                              'notes': notesController.text,
                             };
                           });
                         }
-                        _isEditable = !_isEditable;
+                        isEditable = !isEditable;
                       });
                     },
                   ),
@@ -281,8 +281,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextField(
-                      controller: _notesController,
-                      enabled: _isEditable,
+                      controller: notesController,
+                      enabled: isEditable,
                       style: const TextStyle(
                         fontFamily: 'Poppins',
 
@@ -292,12 +292,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       ),
                       decoration: InputDecoration(
                         hintText: 'Notes',
-                        border: _isEditable
+                        border: isEditable
                             ? const OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFF42A5F5), width: 2),
                         )
                             : InputBorder.none,
-                        focusedBorder: _isEditable
+                        focusedBorder: isEditable
                             ? const OutlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFF42A5F5), width: 2),
                         )
@@ -359,8 +359,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   void _addTaskDialog(BuildContext context) {
-    final TextEditingController _titleController = TextEditingController();
-    final TextEditingController _notesController = TextEditingController();
+    final TextEditingController titleController = TextEditingController();
+    final TextEditingController notesController = TextEditingController();
 
     showDialog(
       context: context,
@@ -385,7 +385,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
-                  controller: _titleController,
+                  controller: titleController,
                   style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 16,
@@ -398,7 +398,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ),
                 const SizedBox(height: 19),
                 TextField(
-                  controller: _notesController,
+                  controller: notesController,
                   style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 16,
@@ -436,8 +436,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ElevatedButton(
                   onPressed: () {
                     final task = {
-                      'title': _titleController.text,
-                      'notes': _notesController.text,
+                      'title': titleController.text,
+                      'notes': notesController.text,
                     };
 
                     setState(() {
@@ -501,7 +501,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ),
             ],
           ),
-          content: Container(
+          content: SizedBox(
             width: MediaQuery.of(context).size.width * 0.9,
             child: SingleChildScrollView(
               child: Column(
@@ -554,7 +554,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                 : null,
                           ),
                         );
-                      }).toList(),
+                      }),
                       const Divider(),
                     ],
                   );

@@ -44,106 +44,109 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: 17),
-            // Progress Cards
-            Row(
-              children: [
-                _buildProgressCard('89%', 'Flashcards', Colors.orange[300]!),
-                const SizedBox(width: 8),
-                _buildProgressCard('100%', 'Test Taken', Colors.blue[300]!),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                _buildProgressCard('18', 'Study Notes', Colors.green[300]!),
-                const SizedBox(width: 8),
-                _buildProgressCard('12', 'Upcoming Tasks', Colors.red[300]!),
-              ],
-            ),
-            const SizedBox(height: 24),
-            // Quick Action Buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Flexible(
-                  child: _buildActionButton(
-                    icon: Icons.book_outlined,
-                    label: 'Flashcards',
-                    color: Colors.teal[300]!,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const FlashcardsScreen()),
-                      );
-                    },
-                  ),
-                ),
-                Flexible(
-                  child: _buildActionButton(
-                    icon: Icons.menu_book_outlined,
-                    label: 'Study Guides',
-                    color: Colors.blue[900]!,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const NotesScreen()),
-                      );
-                    },
-                  ),
-                ),
-                Flexible(
-                  child: _buildActionButton(
-                    icon: Icons.task_alt_outlined,
-                    label: 'Practice Tests',
-                    color: Colors.orange[700]!,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const TestsScreen()),
-                      );
-                    },
-                  ),
-                ),
-                Flexible(
-                  child: _buildActionButton(
-                    icon: Icons.accessibility_new_outlined,
-                    label: 'Accessibility',
-                    color: Colors.green[700]!,
-                    onPressed: () {
-                      // Placeholder for future functionality
-                    },
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            // Schedule Section
-            const Text(
-              'Schedule',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 12),
-            Flexible(
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 17),
+              // Progress Cards
+              Row(
                 children: [
-                  _buildScheduleTile('7', 'Economy', Colors.orange[200]!),
-                  _buildScheduleTile('8', 'Geography', Colors.blue[200]!),
-                  _buildScheduleTile('9', 'English', Colors.indigo[200]!),
+                  _buildProgressCard('89%', 'Flashcards', Colors.orange[300]!),
+                  const SizedBox(width: 8),
+                  _buildProgressCard('100%', 'Test Taken', Colors.blue[300]!),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  _buildProgressCard('18', 'Study Notes', Colors.green[300]!),
+                  const SizedBox(width: 8),
+                  _buildProgressCard('12', 'Upcoming Tasks', Colors.red[300]!),
+                ],
+              ),
+              const SizedBox(height: 24),
+              // Quick Action Buttons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Flexible(
+                    child: _buildActionButton(
+                      icon: Icons.book_outlined,
+                      label: 'Flashcards',
+                      color: Colors.teal[300]!,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const FlashcardFoldersScreen()),
+                        );
+                      },
+                    ),
+                  ),
+                  Flexible(
+                    child: _buildActionButton(
+                      icon: Icons.menu_book_outlined,
+                      label: 'Study Guides',
+                      color: Colors.blue[900]!,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const NotesScreen()),
+                        );
+                      },
+                    ),
+                  ),
+                  Flexible(
+                    child: _buildActionButton(
+                      icon: Icons.task_alt_outlined,
+                      label: 'Practice Tests',
+                      color: Colors.orange[700]!,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const TestsScreen()),
+                        );
+                      },
+                    ),
+                  ),
+                  Flexible(
+                    child: _buildActionButton(
+                      icon: Icons.accessibility_new_outlined,
+                      label: 'Accessibility',
+                      color: Colors.green[700]!,
+                      onPressed: () {
+                        // Placeholder for future functionality
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              // Schedule Section
+              const Text(
+                'Schedule',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 12),
+              SizedBox(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _buildScheduleTile('7', 'Economy', Colors.orange[200]!),
+                    _buildScheduleTile('8', 'Geography', Colors.blue[200]!),
+                    _buildScheduleTile('9', 'English', Colors.indigo[200]!),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

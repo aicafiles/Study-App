@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/home.dart';
 
 class TopicInterestScreen extends StatefulWidget {
   const TopicInterestScreen({super.key});
