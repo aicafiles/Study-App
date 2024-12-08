@@ -8,6 +8,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -17,6 +19,7 @@ class HomeScreen extends StatelessWidget {
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 10),
             Text(
               'Hi, Name!',
               style: TextStyle(
@@ -46,7 +49,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -70,9 +73,10 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 24),
               // Quick Action Buttons
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Flexible(
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
                     child: _buildActionButton(
                       icon: Icons.book_outlined,
                       label: 'Flashcards',
@@ -85,33 +89,30 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  Flexible(
-                    child: _buildActionButton(
-                      icon: Icons.menu_book_outlined,
-                      label: 'Study Guides',
-                      color: Colors.blue[900]!,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const NotesScreen()),
-                        );
-                      },
-                    ),
+                  _buildActionButton(
+                    icon: Icons.menu_book_outlined,
+                    label: 'Notes',
+                    color: Colors.blue[900]!,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const NotesScreen()),
+                      );
+                    },
                   ),
-                  Flexible(
-                    child: _buildActionButton(
-                      icon: Icons.task_alt_outlined,
-                      label: 'Practice Tests',
-                      color: Colors.orange[700]!,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const TestsScreen()),
-                        );
-                      },
-                    ),
+                  _buildActionButton(
+                    icon: Icons.task_alt_outlined,
+                    label: 'Tests',
+                    color: Colors.orange[700]!,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const TestsScreen()),
+                      );
+                    },
                   ),
-                  Flexible(
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
                     child: _buildActionButton(
                       icon: Icons.accessibility_new_outlined,
                       label: 'Accessibility',

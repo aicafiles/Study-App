@@ -4,11 +4,11 @@ import 'dart:convert';
 import 'package:flip_card/flip_card.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Flashcards());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Flashcards extends StatelessWidget {
+  const Flashcards({super.key});
 
   @override
   Widget build(BuildContext context) {
