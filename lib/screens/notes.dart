@@ -384,8 +384,8 @@ class _NotesScreenState extends State<NotesScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () => _deleteNoteDialog(index),
-                  child: const Text("Delete"),
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                  child: const Text("Delete"),
                 ),
               ],
             ),

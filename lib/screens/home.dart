@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             Text(
               'Hi, Name!',
               style: TextStyle(
