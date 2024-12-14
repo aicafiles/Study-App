@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'flashcards.dart';
-import 'notes.dart';
-import 'tests.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -63,6 +60,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 8),
+
               Row(
                 children: [
                   _buildProgressCard('18', 'Study Notes', Colors.green[300]!),
@@ -82,10 +80,7 @@ class HomeScreen extends StatelessWidget {
                       label: 'Flashcards',
                       color: Colors.teal[300]!,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const FlashcardFoldersScreen()),
-                        );
+                        Navigator.pushNamed(context, '/flashcards');
                       },
                     ),
                   ),
@@ -94,10 +89,7 @@ class HomeScreen extends StatelessWidget {
                     label: 'Notes',
                     color: Colors.blue[900]!,
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const NotesScreen()),
-                      );
+                      Navigator.pushNamed(context, '/notes');
                     },
                   ),
                   _buildActionButton(
@@ -105,10 +97,7 @@ class HomeScreen extends StatelessWidget {
                     label: 'Tests',
                     color: Colors.orange[700]!,
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const TestsScreen()),
-                      );
+                      Navigator.pushNamed(context, '/tests');
                     },
                   ),
                   Padding(
@@ -118,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                       label: 'Accessibility',
                       color: Colors.green[700]!,
                       onPressed: () {
-                        // Placeholder for future functionality
+                        Navigator.pushNamed(context, '/accessibility');
                       },
                     ),
                   ),

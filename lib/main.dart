@@ -6,6 +6,10 @@ import 'auth/topic_interest.dart';
 import 'screens/home.dart';
 import 'screens/calendar.dart';
 import 'screens/profile.dart';
+import 'screens/flashcards.dart';
+import 'screens/notes.dart';
+import 'screens/tests.dart';
+import 'screens/accessibility.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +29,10 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => const SignUpScreen(),
         '/topic_interest': (context) => const TopicInterestScreen(),
         '/home': (context) => const MainScreen(),
+        '/flashcards': (context) => const FlashcardFoldersScreen(),
+        '/notes': (context) => const NotesScreen(),
+        '/tests': (context) => const TestsScreen(),
+        '/accessibility': (context) => const AccessibilityScreen(),
       },
     );
   }
